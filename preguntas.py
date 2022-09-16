@@ -24,7 +24,7 @@ def pregunta_01():
     """
     import pandas as pd
     df0 = pd.read_csv("tbl0.tsv", sep = '\t')
-    p1 = df0.len(df.axes[0]) 
+    p1 = len(df0.axes[0]) 
     return p1
 
    
@@ -217,7 +217,7 @@ def pregunta_10():
           union += ":"
       lista.append(union)
     resultado = pd.DataFrame({'_c0':p8, 'lista':lista})
-    resultado
+    
     return resultado
     
 
@@ -256,7 +256,7 @@ def pregunta_11():
           union += ","
       lista.append(union)
     resultado = pd.DataFrame({'_c0':num, 'lista':lista})
-    resultado
+    
     return resultado
     
 
@@ -312,7 +312,7 @@ def pregunta_12():
           union += ","
       listadf.append(union)
     resultado = pd.DataFrame({'_c0':num, 'lista':listadf})
-    resultado
+ 
     return resultado
    
 
