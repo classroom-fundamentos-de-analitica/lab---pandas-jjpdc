@@ -64,8 +64,12 @@ def pregunta_04():
     D    3.833333
     E    4.785714
     Name: _c2, dtype: float64
+    
     """
-    return
+    import pandas as pd
+    df0 = pd.read_csv("tbl0.tsv", sep = '\t')
+    p2 = df0.groupby('_c1').mean()['_c2']
+    return p2
 
 
 def pregunta_05():
