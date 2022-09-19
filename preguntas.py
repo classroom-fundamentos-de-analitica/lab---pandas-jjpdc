@@ -42,7 +42,7 @@ def pregunta_02():
 
     df0 = pd.read_csv("tbl0.tsv", sep='\t')
     p1 = df0.shape
-     return(p1[1])
+    return p1[1]
    
 
 
