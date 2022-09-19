@@ -226,7 +226,7 @@ def pregunta_10():
           union += ":"
       lista.append(union)
     resultado = pd.DataFrame({'_c0':p8, '_c1':lista})
-    
+    resultado
     return resultado
     
 
@@ -264,8 +264,8 @@ def pregunta_11():
         if(letras.index(o)<len(letras)-1):
           union += ","
       lista.append(union)
-    resultado = pd.DataFrame({'_c0':num, 'lista':lista})
-    
+    resultado = pd.DataFrame({'_c0':num, '_c4':lista})
+    resultado
     return resultado
     
 
