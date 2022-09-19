@@ -320,7 +320,7 @@ def pregunta_12():
         if (i.index(o) < len(i)-1):
           union += ","
       listadf.append(union)
-    resultado = pd.DataFrame({'_c0':num, 'lista':listadf})
+    resultado = pd.DataFrame({'_c0':num, '_c5':listadf})
     resultado
     return resultado
    
