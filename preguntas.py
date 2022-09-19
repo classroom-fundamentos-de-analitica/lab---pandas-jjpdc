@@ -38,7 +38,12 @@ def pregunta_02():
     4
 
     """
-    return
+    import pandas as pd
+
+    df0 = pd.read_csv("tbl0.tsv", sep='\t')
+    p1 = df0.shape
+     return(p1[1])
+   
 
 
 def pregunta_03():
