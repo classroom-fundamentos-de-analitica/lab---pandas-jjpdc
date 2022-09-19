@@ -321,7 +321,7 @@ def pregunta_12():
           union += ","
       listadf.append(union)
     resultado = pd.DataFrame({'_c0':num, 'lista':listadf})
- 
+    resultado
     return resultado
    
 
