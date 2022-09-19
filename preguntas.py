@@ -95,7 +95,11 @@ def pregunta_05():
     E    9
     Name: _c2, dtype: int64
     """
-    return
+    import pandas as pd
+    df0 = pd.read_csv("tbl0.tsv", sep = '\t')
+    p5 = df0.groupby('_c1').max()['_c2']
+    return(p5)
+    
 
 
 def pregunta_06():
