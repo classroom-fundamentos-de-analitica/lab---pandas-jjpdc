@@ -225,9 +225,13 @@ def pregunta_10():
         if(num.index(o)<len(num)-1):
           union += ":"
       lista.append(union)
-    resultado = pd.DataFrame({'_c1':p8, '_c2':lista})
-    resultado
-    return(resultado)
+    resultado1 = pd.DataFrame({'_c2': lista})
+    resultado2 = pd.DataFrame({'_c1':p8})
+    resultado1
+    resultado2
+    print(resultado1)
+    print(resultado2)
+    return
 
    
     
