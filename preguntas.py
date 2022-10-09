@@ -226,7 +226,7 @@ def pregunta_10():
           union += ":"
       lista.append(union)
     resultado1 = pd.DataFrame({'_c2': lista})
-    resultado2 = pd.DataFrame({'_c1':p8})
+    resultado2 = pd.DataFrame({'_c0':p8})
     resultado1
     resultado2
     print(resultado1)
