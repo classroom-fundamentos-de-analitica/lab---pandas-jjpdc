@@ -61,10 +61,10 @@ def pregunta_03():
 
     """
     import pandas as pd
-    df = pd.read_csv("data.tsv", sep = '\t')
-    p1 = df.groupby('_c1').count()['_c2']
+    df0 = pd.read_csv("tbl0.tsv", sep='\t')
+    p2 = df0.groupby('_c1').count()['_c2']
  
-    return p1
+    return p2
 
 
 def pregunta_04():
