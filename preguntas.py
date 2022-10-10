@@ -208,30 +208,27 @@ def pregunta_10():
     
     """
     import pandas as pd
-    df0 = pd.read_csv("tbl0.tsv", sep = '\t')
+    df0 = pd.read_csv("tbl0.tsv", sep='\t')
     p8 = list(set(df0['_c1']))
     p8.sort()
     p8
     lista = []
     for i in p8:
-      num = []
-      union = ""
-      for o in df0.index:
-        if(i == df0['_c1'][o]):
-          num.append(df0['_c2'][o])
-      num.sort()
-      for o in num:
-        union += str(o)
-        if(num.index(o)<len(num)-1):
-          union += ":"
-      lista.append(union)
-    resultado1 = pd.DataFrame({'_c2': lista})
-    resultado2 = pd.DataFrame({'_c0':p8})
+        num = []
+        union = ""
+        for o in df0.index:
+            if (i == df0['_c1'][o]):
+                num.append(df0['_c2'][o])
+        num.sort()
+        for o in num:
+            union += str(o)
+            if (num.index(o) < len(num) - 1):
+                union += ":"
+        lista.append(union)
+    resultado1 = pd.DataFrame({'_c0': p8,'_c2':lista})
+   
     resultado1
-    resultado2
-    print(resultado1)
-    print(resultado2)
-    return
+    return resultado1
 
    
     
