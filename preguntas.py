@@ -187,7 +187,7 @@ def pregunta_09():
     anos = []
     for i in df0['_c3']:
         anos.append(i.split('-')[0])
-    df0['anos'] = anos
+    df0['year'] = anos
 
     return df0
 
