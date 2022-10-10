@@ -208,6 +208,7 @@ def pregunta_10():
     
     """
     import pandas as pd
+    tb10 = pd.read_csv("tbl0.tsv", sep='\t')
     valores = list(tb10[['_c1', '_c2']].groupby(['_c1'])['_c2'].apply(list))
     c2=[]
     for letra in valores:
