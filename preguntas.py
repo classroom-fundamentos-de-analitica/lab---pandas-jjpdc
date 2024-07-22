@@ -22,7 +22,12 @@ def pregunta_01():
     40
 
     """
-    return
+    import pandas as pd
+    df0 = pd.read_csv("tbl0.tsv", sep = '\t')
+    p1 = len(df0.axes[0]) 
+    return p1
+
+   
 
 
 def pregunta_02():
@@ -33,7 +38,12 @@ def pregunta_02():
     4
 
     """
-    return
+    import pandas as pd
+
+    df0 = pd.read_csv("tbl0.tsv", sep='\t')
+    p1 = df0.shape
+    return p1[1]
+   
 
 
 def pregunta_03():
@@ -50,7 +60,11 @@ def pregunta_03():
     Name: _c1, dtype: int64
 
     """
-    return
+    import pandas as pd
+    df0 = pd.read_csv("tbl0.tsv", sep='\t')
+    p2 = df0.groupby('_c1').count()['_c2']
+ 
+    return p2
 
 
 def pregunta_04():
@@ -64,8 +78,12 @@ def pregunta_04():
     D    3.833333
     E    4.785714
     Name: _c2, dtype: float64
+    
     """
-    return
+    import pandas as pd
+    df0 = pd.read_csv("tbl0.tsv", sep = '\t')
+    p2 = df0.groupby('_c1').mean()['_c2']
+    return p2
 
 
 def pregunta_05():
@@ -82,7 +100,11 @@ def pregunta_05():
     E    9
     Name: _c2, dtype: int64
     """
-    return
+    import pandas as pd
+    df0 = pd.read_csv("tbl0.tsv", sep = '\t')
+    p5 = df0.groupby('_c1').max()['_c2']
+    return(p5)
+    
 
 
 def pregunta_06():
@@ -94,7 +116,15 @@ def pregunta_06():
     ['A', 'B', 'C', 'D', 'E', 'F', 'G']
 
     """
-    return
+    import pandas as pd
+    df1 = pd.read_csv("tbl1.tsv", sep = '\t')
+    p4 = list(set(df1['_c4']))
+    p4.sort()
+    mayusculas = []
+    for i in p4:
+      mayusculas.append(i.upper())
+    return mayusculas
+    
 
 
 def pregunta_07():
@@ -110,7 +140,10 @@ def pregunta_07():
     E    67
     Name: _c2, dtype: int64
     """
-    return
+    import pandas as pd
+    df0 = pd.read_csv("tbl0.tsv", sep = '\t')
+    p5 = df0.groupby('_c1').sum()['_c2']
+    return p5
 
 
 def pregunta_08():
@@ -128,7 +161,10 @@ def pregunta_08():
     39   39   E    5  1998-01-26    44
 
     """
-    return
+    import pandas as pd
+    df0 = pd.read_csv("tbl0.tsv", sep = '\t')
+    df0['suma'] = df0['_c0'] + df0['_c2']
+    return df0
 
 
 def pregunta_09():
@@ -146,7 +182,14 @@ def pregunta_09():
     39   39   E    5  1998-01-26  1998
 
     """
-    return
+    import pandas as pd
+    df0 = pd.read_csv("tbl0.tsv", sep = '\t')
+    anos = []
+    for i in df0['_c3']:
+        anos.append(i.split('-')[0])
+    df0['year'] = anos
+
+    return df0
 
 
 def pregunta_10():
@@ -162,8 +205,19 @@ def pregunta_10():
     2   C                    0:5:6:7:9
     3   D                  1:2:3:5:5:7
     4   E  1:1:2:3:3:4:5:5:5:6:7:8:8:9
+    
     """
-    return
+    import pandas as pd
+    tb10 = pd.read_csv("tbl0.tsv", sep='\t')
+    valores = list(tb10[['_c1', '_c2']].groupby(['_c1'])['_c2'].apply(list))
+    c2=[]
+    for letra in valores:
+        texto= ''
+        for valor in sorted(letra):
+            texto+=str(valor)+":"
+        c2.append(texto[:-1])
+    return pd.DataFrame({'_c2':c2}, index= pd.Series(["A","B","C","D","E"], name='_c1'))
+    
 
 
 def pregunta_11():
@@ -182,7 +236,27 @@ def pregunta_11():
     38   38      d,e
     39   39    a,d,f
     """
-    return
+    import pandas as pd
+    df1 = pd.read_csv("tbl1.tsv", sep = '\t')
+    num = list(set(df1['_c0']))
+    num.sort()
+    lista = []
+    for i in num:
+      letras = []
+      union = ""
+      for o in df1.index:
+        if (df1['_c0'][o] == i):
+          letras.append(df1['_c4'][o])
+      letras.sort()
+      for o in letras:
+        union += str(o)
+        if(letras.index(o)<len(letras)-1):
+          union += ","
+      lista.append(union)
+    resultado = pd.DataFrame({'_c0':num, '_c4':lista})
+    resultado
+    return resultado
+    
 
 
 def pregunta_12():
@@ -200,7 +274,45 @@ def pregunta_12():
     38   38                    eee:0,fff:9,iii:2
     39   39                    ggg:3,hhh:8,jjj:5
     """
-    return
+    import pandas as pd
+    df2 = pd.read_csv("tbl2.tsv", sep = '\t')
+    num = list(set(df2['_c0']))
+    num.sort()
+    lista = []
+    lista2 = []
+    listadf = []
+    for i in num:
+      letras = []
+      derecha = []
+      union = ""
+      for o in df2.index:
+        if (i == df2['_c0'][o]):
+          letras.append(df2['_c5a'][o])
+          derecha.append(df2['_c5b'][o])
+      for o in letras:
+        union += str(o)
+        union += ":"
+        union += str(derecha[letras.index(o)])
+        if (letras.index(o)<len(letras)-1):
+          union += ","
+      lista.append(union)
+    for i in lista:
+      l = []
+      for o in i.split(','):
+        l.append(o)
+      lista2.append(l)
+    for i in lista2:
+      i.sort()
+      union = ""
+      for o in i:
+        union += str(o)
+        if (i.index(o) < len(i)-1):
+          union += ","
+      listadf.append(union)
+    resultado = pd.DataFrame({'_c0':num, '_c5':listadf})
+    resultado
+    return resultado
+   
 
 
 def pregunta_13():
@@ -217,4 +329,10 @@ def pregunta_13():
     E    275
     Name: _c5b, dtype: int64
     """
-    return
+    import pandas as pd
+    df0 = pd.read_csv("tbl0.tsv", sep = '\t')
+    df2 = pd.read_csv("tbl2.tsv", sep = '\t')
+    p11 = pd.merge(df0, df2, on = "_c0")
+    resultado = p11.groupby('_c1').sum()['_c5b']
+    return resultado
+   
